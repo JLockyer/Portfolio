@@ -1,0 +1,83 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Skills</h2>
+<!--Navbar for links-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Jacob's Portfolio</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/Home/Index">Home</a></li>
+            <li><a href="/Skills/Index">Skills</a></li>
+            <li><a href="/Projects/Index">Projects</a></li>
+            <li><a href="/Contacts/Index">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!--Table that contains the language and level of knowledge using glyphicon stars-->
+<div class="container">
+    <h2>List of Language Skills</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Language</th>
+                <th>Beginner</th>
+                <th>Familiar</th>
+                <th>Intermediate</th>
+                <th>Advanced</th>
+                <th>Master</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="success">
+                <td>C#</td>
+                <td><span class="glyphicon glyphicon-star"></span></td>
+                <td><span class="glyphicon glyphicon-star"></span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="danger">
+                <td>HTML</td>
+                <td><span class="glyphicon glyphicon-star"></span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="info">
+                <td>CSS</td>
+                <td><span class="glyphicon glyphicon-star"></span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="hello">
+                <td>ASP.Net MVC</td>
+                <td><span class="glyphicon glyphicon-star"></span></td>
+                <td><span class="glyphicon glyphicon-star"></span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr class="good">
+                <td>SQL Server</td>
+                <td><span class="glyphicon glyphicon-star"></span></td>
+                <td><span class="glyphicon glyphicon-star"></span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

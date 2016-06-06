@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Portfolio_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ApplicationType">
+    <Key>
+      <PropertyRef Name="TypeID" />
+    </Key>
+    <Property Name="TypeID" Type="Int32" Nullable="false" />
+    <Property Name="AppType" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Projects" Relationship="Self.FK__Project__TypeID__145C0A3F" FromRole="ApplicationType" ToRole="Project" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="Int32" Nullable="false" />
+    <Property Name="TypeID" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="About" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="CodeLanguage" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Picture" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Link" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ApplicationType" Relationship="Self.FK__Project__TypeID__145C0A3F" FromRole="Project" ToRole="ApplicationType" />
+  </EntityType>
+  <Association Name="FK__Project__TypeID__145C0A3F">
+    <End Role="ApplicationType" Type="Self.ApplicationType" Multiplicity="0..1" />
+    <End Role="Project" Type="Self.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ApplicationType">
+        <PropertyRef Name="TypeID" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="TypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Portfolio_DBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ApplicationTypes" EntityType="Self.ApplicationType" />
+    <EntitySet Name="Projects" EntityType="Self.Project" />
+    <AssociationSet Name="FK__Project__TypeID__145C0A3F" Association="Self.FK__Project__TypeID__145C0A3F">
+      <End Role="ApplicationType" EntitySet="ApplicationTypes" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

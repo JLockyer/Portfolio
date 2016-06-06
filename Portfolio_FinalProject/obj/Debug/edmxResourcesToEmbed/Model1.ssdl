@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Portfolio_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ApplicationType">
+    <Key>
+      <PropertyRef Name="TypeID" />
+    </Key>
+    <Property Name="TypeID" Type="int" Nullable="false" />
+    <Property Name="AppType" Type="nvarchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="int" Nullable="false" />
+    <Property Name="TypeID" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="About" Type="nvarchar" MaxLength="4000" />
+    <Property Name="CodeLanguage" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Picture" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Link" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <Association Name="FK__Project__TypeID__145C0A3F">
+    <End Role="ApplicationType" Type="Self.ApplicationType" Multiplicity="0..1" />
+    <End Role="Project" Type="Self.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ApplicationType">
+        <PropertyRef Name="TypeID" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="TypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Portfolio_DBModelStoreContainer">
+    <EntitySet Name="ApplicationType" EntityType="Self.ApplicationType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Project__TypeID__145C0A3F" Association="Self.FK__Project__TypeID__145C0A3F">
+      <End Role="ApplicationType" EntitySet="ApplicationType" />
+      <End Role="Project" EntitySet="Project" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Portfolio_FinalProject.Project>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Projects</h2>
+
+<!--Navbar for links-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Jacob's Portfolio</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/Home/Index">Home</a></li>
+            <li><a href="/Skills/Index">Skills</a></li>
+            <li><a href="/Projects/Index">Projects</a></li>
+            <li><a href="/Contacts/Index">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@foreach (var item in Model)
+{
+    <!--Thumbnails for the different projects-->
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <div class="caption">
+                <p>@Html.DisplayFor(modelItem => item.Name)</p>
+                <p>@Html.DisplayFor(modelItem => item.About)</p>
+                <p>@Html.DisplayFor(modelItem => item.CodeLanguage)</p>
+                <p>@Html.DisplayFor(modelItem => item.Link)</p>
+                <p>@Html.DisplayFor(modelItem => item.ApplicationType.AppType)</p>
+                <p>@Html.DisplayFor(modelItem => item.Picture)</p>
+            </div>
+        </div>
+    </div>
+}
+
+</table>
